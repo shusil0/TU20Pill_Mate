@@ -15,7 +15,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/buttonteach"
+            android:id="@+id/buttondoct"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -33,7 +33,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/buttonstud"
+            android:id="@+id/buttonpat"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
