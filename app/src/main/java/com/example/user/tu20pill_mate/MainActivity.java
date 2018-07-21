@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         btnpat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent k = new Intent(MainActivity.this, Logins.class);
+                Intent k = new Intent(MainActivity.this, Firebase_logins.class);
                 startActivity(k); // runs
             }
         });
