@@ -29,6 +29,7 @@ public class Firebase_logins extends AppCompatActivity {
                                 new AuthUI.IdpConfig.GoogleBuilder().build()))
                         .setTheme(R.style.GreenTheme)
                         .setLogo(R.drawable.logo)
+
                         .build(),
                 RC_SIGN_IN);
 
@@ -57,7 +58,7 @@ public class Firebase_logins extends AppCompatActivity {
     }
 
     public void nextActivity() {
-        Intent intent = new Intent(this, Logins.class);
+        Intent intent = new Intent(this, Slide_activity.class);
         startActivity(intent);
     }
 
