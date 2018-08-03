@@ -28,7 +28,7 @@ public class Slide_activity extends AppCompatActivity implements View.OnClickLis
     }
 
     public void startPage() {
-        Intent i = new Intent(this, Logins.class);
+        Intent i = new Intent(this, get_started.class);
         startActivity(i);
     }
 

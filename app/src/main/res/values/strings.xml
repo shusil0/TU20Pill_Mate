@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TU20 Pill_Mate</string>
+    <string name="app_name">Pill_Mate</string>
 
     <string name="hello_world">Hello World!</string>
     <string name="action_settings">Settings</string>
@@ -10,7 +10,7 @@
     <string name="title_activity_edit_reminder">Edit Reminder</string>
     <string name="title_activity_licenses">Licenses</string>
 
-    <string name="add_reminder">Reminder</string>
+    <string name="add_reminder">Medicine</string>
     <string name="details">Details</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
