@@ -16,7 +16,6 @@ import com.example.user.tu20pill_mate.data.AlarmReminderContract;
 /**
  * Created by Shusil
  */
-
 public class AlarmCursorAdapter extends CursorAdapter {
 
     private TextView mTitleText, mDateAndTimeText, mRepeatInfoText;
@@ -27,7 +26,6 @@ public class AlarmCursorAdapter extends CursorAdapter {
     public AlarmCursorAdapter(Context context, Cursor c) {
         super(context, c, 0 /* flags */);
     }
-
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return LayoutInflater.from(context).inflate(R.layout.items, parent, false);
@@ -58,13 +56,33 @@ public class AlarmCursorAdapter extends CursorAdapter {
         String repeatType = cursor.getString(repeatTypeColumnIndex);
         String active = cursor.getString(activeColumnIndex);
 
-        String dateTime = date + " " + time;
+
 
 
         setReminderTitle(title);
-        setReminderDateTime(dateTime);
-        setReminderRepeatInfo(repeat, repeatNo, repeatType);
-        setActiveImage(active);
+
+        if (date != null) {
+            String dateTime = date + " " + time;
+            setReminderDateTime(dateTime);
+        } else {
+            mDateAndTimeText.setText("Date not set");
+        }
+
+        if (repeat != null) {
+            setReminderRepeatInfo(repeat, repeatNo, repeatType);
+        } else {
+            mRepeatInfoText.setText("Repeat Not Set");
+        }
+
+        if (active != null) {
+            setActiveImage(active);
+        } else {
+            mActiveImage.setImageResource(R.drawable.ic_notifications_off_grey600_24dp);
+        }
+
+
+
+
 
 
     }
@@ -107,5 +125,6 @@ public class AlarmCursorAdapter extends CursorAdapter {
         } else if (active.equals("false")) {
             mActiveImage.setImageResource(R.drawable.ic_notifications_off_grey600_24dp);
         }
+
     }
 }

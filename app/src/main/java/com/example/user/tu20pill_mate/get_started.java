@@ -13,7 +13,7 @@ public class get_started extends AppCompatActivity {
     }
 
     public void switchToNotification() {
-        Intent i = new Intent(this, AddReminderActivity.class);
+        Intent i = new Intent(this, alarm_main.class);
         startActivity(i);
     }
 

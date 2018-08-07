@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.provider.Settings;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
@@ -16,16 +17,13 @@ import com.example.user.tu20pill_mate.R;
 import com.example.user.tu20pill_mate.data.AlarmReminderContract;
 
 /**
- * Created by Shusil.
+ * Created by Shusil
  */
 
 public class ReminderAlarmService extends IntentService {
     private static final String TAG = ReminderAlarmService.class.getSimpleName();
 
     private static final int NOTIFICATION_ID = 42;
-
-    Cursor cursor;
-
     //This is a deep link intent, and needs the task stack
     public static PendingIntent getReminderPendingIntent(Context context, Uri uri) {
         Intent action = new Intent(context, ReminderAlarmService.class);
@@ -51,9 +49,7 @@ public class ReminderAlarmService extends IntentService {
                 .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         //Grab the task description
-        if (uri != null) {
-            cursor = getContentResolver().query(uri, null, null, null, null);
-        }
+        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
 
         String description = "";
         try {
@@ -71,6 +67,8 @@ public class ReminderAlarmService extends IntentService {
                 .setContentText(description)
                 .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
                 .setContentIntent(operation)
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
                 .setAutoCancel(true)
                 .build();
 

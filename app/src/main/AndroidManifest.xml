@@ -57,9 +57,21 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name=".data.AlarmReminderProvider"
+            android:authorities="com.example.user.tu20pill_mate"
+            android:exported="false" />
+
+        <service
+            android:name=".reminder.ReminderAlarmService"
+            android:exported="false" />
+
+        
         <activity android:name=".alarm_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
