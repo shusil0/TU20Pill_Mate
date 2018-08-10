@@ -12,9 +12,18 @@ public class get_started extends AppCompatActivity {
         switchToNotification();
     }
 
+    public void medInfo(View v) {
+        switchToMedInfo();
+    }
+
     public void switchToNotification() {
         Intent i = new Intent(this, alarm_main.class);
         startActivity(i);
+    }
+
+    public void switchToMedInfo() {
+        Intent intent = new Intent(this, MedInfo.class);
+        startActivity(intent);
     }
 
 
