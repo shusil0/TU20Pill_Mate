@@ -11,10 +11,11 @@
         android:id="@+id/logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_above="@+id/textUser"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
         android:contentDescription="Image to display"
-        android:src="@drawable/logo" />
+        android:src="@drawable/pills00" />
 
     <EditText
         android:id="@+id/username"
@@ -49,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="87dp"
+        android:layout_marginBottom="58dp"
         android:background="@drawable/buttonstyle2"
         android:elevation="0dp"
         android:onClick="signUpOrLogIn"
@@ -60,7 +61,9 @@
         android:id="@+id/textUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="251dp"
         android:text="Pill Mate"
         android:textColor="@color/lightorangedark"
         android:textSize="30sp"

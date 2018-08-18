@@ -21,7 +21,7 @@ public class slide extends PagerAdapter {
 
 
     //Images
-    public int[] image_list = {R.drawable.logo, R.drawable.alarm1, R.drawable.doctor, R.drawable.thumbs_up};
+    public int[] image_list = {R.drawable.pills00, R.drawable.alarm1, R.drawable.doctor, R.drawable.thumbs_up};
 
     // Titles list
     public String[] title_list = {"Welcome", "Welcome", "Welcome", "Welcome"};
