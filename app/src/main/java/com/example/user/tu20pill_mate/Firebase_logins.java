@@ -27,8 +27,8 @@ public class Firebase_logins extends AppCompatActivity {
                         .setAvailableProviders(Arrays.asList(
                                 new AuthUI.IdpConfig.EmailBuilder().build(),
                                 new AuthUI.IdpConfig.GoogleBuilder().build()))
-                        .setTheme(R.style.GreenTheme)
-                        .setLogo(R.drawable.logo)
+                        .setTheme(R.style.AppTheme)
+                        .setLogo(R.drawable.pills00)
 
                         .build(),
                 RC_SIGN_IN);
