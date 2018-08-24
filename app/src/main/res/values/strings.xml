@@ -45,8 +45,9 @@
 
     <string name="editor_update_reminder_failed">Error with updating reminder</string>
 
-    <string name="reminder_title">AlarmReminder</string>
+    <string name="reminder_title">Meds Reminder</string>
     <string name="title_activity_list_reminders">"Reminders "</string>
 
+    <string name="DIN_number">DIN Number</string>
 
 </resources>

@@ -256,6 +256,52 @@
 
             </RelativeLayout>
 
+
+            <RelativeLayout
+                android:id="@+id/DINnumber"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="setRepeatNo">
+
+                <ImageView
+                    android:id="@+id/DIN_no_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_unfold_more_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/DIN_no_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/DIN_no_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/DIN_number"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/set_DIN_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
             <RelativeLayout
                 android:id="@+id/RepeatType"
                 android:layout_width="match_parent"

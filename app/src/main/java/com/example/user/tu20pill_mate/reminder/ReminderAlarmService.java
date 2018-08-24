@@ -65,7 +65,7 @@ public class ReminderAlarmService extends IntentService {
         Notification note = new NotificationCompat.Builder(this)
                 .setContentTitle(getString(R.string.reminder_title))
                 .setContentText(description)
-                .setSmallIcon(R.drawable.ic_add_alert_black_24dp)
+                .setSmallIcon(R.drawable.ic_local_hospital_black_24dp)
                 .setContentIntent(operation)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
