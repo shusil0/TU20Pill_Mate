@@ -2,6 +2,7 @@
 <resources>
 
     <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#3F51B5</color>
     <color name="gradient">#000080</color>
     <color name="black">#000</color>color
     <color name="lightorange">#fdf2df</color>

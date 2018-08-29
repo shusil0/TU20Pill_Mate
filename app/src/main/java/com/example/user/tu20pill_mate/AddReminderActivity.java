@@ -48,7 +48,7 @@ public class AddReminderActivity extends AppCompatActivity implements
 
     private Toolbar mToolbar;
     private EditText mTitleText;
-    private TextView mDateText, mTimeText, mRepeatText, mRepeatNoText, mRepeatTypeText;
+    private TextView mDateText, mTimeText, mRepeatText, mRepeatNoText, mRepeatTypeText, mDINnoText;
     private FloatingActionButton mFAB1;
     private FloatingActionButton mFAB2;
     private Calendar mCalendar;
@@ -60,6 +60,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     private String mDate;
     private String mRepeat;
     private String mRepeatNo;
+    private String mDINno;
     private String mRepeatType;
     private String mActive;
 
@@ -72,6 +73,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     private static final String KEY_DATE = "date_key";
     private static final String KEY_REPEAT = "repeat_key";
     private static final String KEY_REPEAT_NO = "repeat_no_key";
+    private static final String KEY_DIN_NO = "din_no_key";
     private static final String KEY_REPEAT_TYPE = "repeat_type_key";
     private static final String KEY_ACTIVE = "active_key";
 
@@ -122,6 +124,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         mTimeText = (TextView) findViewById(R.id.set_time);
         mRepeatText = (TextView) findViewById(R.id.set_repeat);
         mRepeatNoText = (TextView) findViewById(R.id.set_repeat_no);
+        mDINnoText = (TextView) findViewById(R.id.set_DIN_no);
         mRepeatTypeText = (TextView) findViewById(R.id.set_repeat_type);
         mRepeatSwitch = (Switch) findViewById(R.id.repeat_switch);
         mFAB1 = (FloatingActionButton) findViewById(R.id.starred1);
@@ -131,6 +134,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         mActive = "true";
         mRepeat = "true";
         mRepeatNo = Integer.toString(1);
+        mDINno = Integer.toString(1);
         mRepeatType = "Hour";
 
         mCalendar = Calendar.getInstance();
@@ -165,6 +169,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         mDateText.setText(mDate);
         mTimeText.setText(mTime);
         mRepeatNoText.setText(mRepeatNo);
+        mDINnoText.setText(mDINno);
         mRepeatTypeText.setText(mRepeatType);
         mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
 
@@ -189,6 +194,10 @@ public class AddReminderActivity extends AppCompatActivity implements
             String savedRepeatNo = savedInstanceState.getString(KEY_REPEAT_NO);
             mRepeatNoText.setText(savedRepeatNo);
             mRepeatNo = savedRepeatNo;
+
+            String savedDINno = savedInstanceState.getString(KEY_DIN_NO);
+            mDINnoText.setText(savedDINno);
+            mDINno = savedDINno;
 
             String savedRepeatType = savedInstanceState.getString(KEY_REPEAT_TYPE);
             mRepeatTypeText.setText(savedRepeatType);
@@ -224,6 +233,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         outState.putCharSequence(KEY_DATE, mDateText.getText());
         outState.putCharSequence(KEY_REPEAT, mRepeatText.getText());
         outState.putCharSequence(KEY_REPEAT_NO, mRepeatNoText.getText());
+        outState.putCharSequence(KEY_DIN_NO, mDINnoText.getText());
         outState.putCharSequence(KEY_REPEAT_TYPE, mRepeatTypeText.getText());
         outState.putCharSequence(KEY_ACTIVE, mActive);
     }
@@ -373,6 +383,42 @@ public class AddReminderActivity extends AppCompatActivity implements
         alert.show();
     }
 
+
+    // On clicking repeat interval button
+    public void setDINno(View v) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Enter DIN Number");
+
+        // Create EditText box to input repeat number
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        alert.setView(input);
+        alert.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        if (input.getText().toString().length() == 0) {
+                            mDINno = Integer.toString(1);
+                            mDINnoText.setText(mDINno);
+                            //   mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+                        } else {
+                            mDINno = input.getText().toString();
+                            mDINnoText.setText(mDINno);
+                            // mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+                        }
+                    }
+                });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // do nothing
+            }
+        });
+        alert.show();
+    }
+
+
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu options from the res/menu/menu_editor.xml file.
@@ -441,12 +487,15 @@ public class AddReminderActivity extends AppCompatActivity implements
                 // Show a dialog that notifies the user they have unsaved changes
                 showUnsavedChangesDialog(discardButtonClickListener);
                 return true;
+
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     private void showUnsavedChangesDialog(
+
             DialogInterface.OnClickListener discardButtonClickListener) {
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the postivie and negative buttons on the dialog.
@@ -469,6 +518,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     }
 
     private void showDeleteConfirmationDialog() {
+
         // Create an AlertDialog.Builder and set the message, and click listeners
         // for the postivie and negative buttons on the dialog.
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -537,6 +587,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_TIME, mTime);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT, mRepeat);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO, mRepeatNo);
+        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO, mDINno);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE, mRepeatType);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE, mActive);
 
@@ -631,6 +682,7 @@ public class AddReminderActivity extends AppCompatActivity implements
                 AlarmReminderContract.AlarmReminderEntry.KEY_TIME,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO,
+                AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE,
         };
@@ -658,6 +710,7 @@ public class AddReminderActivity extends AppCompatActivity implements
             int timeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_TIME);
             int repeatColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT);
             int repeatNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO);
+            int dinNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO);
             int repeatTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE);
             int activeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE);
 
@@ -667,6 +720,7 @@ public class AddReminderActivity extends AppCompatActivity implements
             String time = cursor.getString(timeColumnIndex);
             String repeat = cursor.getString(repeatColumnIndex);
             String repeatNo = cursor.getString(repeatNoColumnIndex);
+            String dinNo = cursor.getString(dinNoColumnIndex);
             String repeatType = cursor.getString(repeatTypeColumnIndex);
             String active = cursor.getString(activeColumnIndex);
 
@@ -676,6 +730,7 @@ public class AddReminderActivity extends AppCompatActivity implements
             mDateText.setText(date);
             mTimeText.setText(time);
             mRepeatNoText.setText(repeatNo);
+            mDINnoText.setText(dinNo);
             mRepeatTypeText.setText(repeatType);
             mRepeatText.setText("Every " + repeatNo + " " + repeatType + "(s)");
             // Setup up active buttons

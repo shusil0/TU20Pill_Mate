@@ -45,6 +45,7 @@ public class AlarmCursorAdapter extends CursorAdapter {
         int timeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_TIME);
         int repeatColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT);
         int repeatNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO);
+        int dinNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO);
         int repeatTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE);
         int activeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE);
 
@@ -53,6 +54,7 @@ public class AlarmCursorAdapter extends CursorAdapter {
         String time = cursor.getString(timeColumnIndex);
         String repeat = cursor.getString(repeatColumnIndex);
         String repeatNo = cursor.getString(repeatNoColumnIndex);
+        String dinNo = cursor.getString(dinNoColumnIndex);
         String repeatType = cursor.getString(repeatTypeColumnIndex);
         String active = cursor.getString(activeColumnIndex);
 
@@ -72,6 +74,11 @@ public class AlarmCursorAdapter extends CursorAdapter {
             setReminderRepeatInfo(repeat, repeatNo, repeatType);
         } else {
             mRepeatInfoText.setText("Repeat Not Set");
+        }
+
+        if (dinNo != null) {
+
+
         }
 
         if (active != null) {

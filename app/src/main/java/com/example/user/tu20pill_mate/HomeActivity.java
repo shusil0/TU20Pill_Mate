@@ -35,7 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         btnpat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent k = new Intent(getApplicationContext(), Firebase_logins.class);
+                Intent k = new Intent(getApplicationContext(), Slide_activity.class);
                 startActivity(k); // runs
             }
         });

@@ -263,7 +263,7 @@
                 android:layout_height="72dp"
                 android:background="?android:attr/selectableItemBackground"
                 android:clickable="true"
-                android:onClick="setRepeatNo">
+                android:onClick="setDINno">
 
                 <ImageView
                     android:id="@+id/DIN_no_icon"

@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
         android:contentDescription="Image to display"
-        android:src="@drawable/pills00" />
+        android:src="@drawable/pills" />
 
     <TextView
         android:id="@+id/txtTitle"

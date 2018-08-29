@@ -109,6 +109,7 @@ public class alarm_main extends AppCompatActivity implements LoaderManager.Loade
                 AlarmReminderContract.AlarmReminderEntry.KEY_DATE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_TIME,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT,
+                AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE
