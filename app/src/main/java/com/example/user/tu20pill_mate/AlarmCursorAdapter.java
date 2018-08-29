@@ -46,6 +46,8 @@ public class AlarmCursorAdapter extends CursorAdapter {
         int repeatColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT);
         int repeatNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO);
         int dinNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO);
+        int dosageTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE);
+        int dosageNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO);
         int repeatTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE);
         int activeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE);
 
@@ -55,6 +57,8 @@ public class AlarmCursorAdapter extends CursorAdapter {
         String repeat = cursor.getString(repeatColumnIndex);
         String repeatNo = cursor.getString(repeatNoColumnIndex);
         String dinNo = cursor.getString(dinNoColumnIndex);
+        String dosageNo = cursor.getString(dosageNoColumnIndex);
+        String dosageType = cursor.getString(dosageTypeColumnIndex);
         String repeatType = cursor.getString(repeatTypeColumnIndex);
         String active = cursor.getString(activeColumnIndex);
 
@@ -78,6 +82,15 @@ public class AlarmCursorAdapter extends CursorAdapter {
 
         if (dinNo != null) {
 
+
+        }
+
+
+        if (dosageNo != null) {
+
+        }
+
+        if (dosageType != null) {
 
         }
 

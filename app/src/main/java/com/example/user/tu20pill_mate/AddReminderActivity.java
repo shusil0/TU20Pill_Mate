@@ -17,6 +17,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -48,7 +49,7 @@ public class AddReminderActivity extends AppCompatActivity implements
 
     private Toolbar mToolbar;
     private EditText mTitleText;
-    private TextView mDateText, mTimeText, mRepeatText, mRepeatNoText, mRepeatTypeText, mDINnoText;
+    private TextView mDateText, mTimeText, mRepeatText, mRepeatNoText, mRepeatTypeText, mDINnoText, mDosageNoText, mDosageTypeText;
     private FloatingActionButton mFAB1;
     private FloatingActionButton mFAB2;
     private Calendar mCalendar;
@@ -61,6 +62,8 @@ public class AddReminderActivity extends AppCompatActivity implements
     private String mRepeat;
     private String mRepeatNo;
     private String mDINno;
+    private String mDosageNo;
+    private String mDosageType;
     private String mRepeatType;
     private String mActive;
 
@@ -74,6 +77,10 @@ public class AddReminderActivity extends AppCompatActivity implements
     private static final String KEY_REPEAT = "repeat_key";
     private static final String KEY_REPEAT_NO = "repeat_no_key";
     private static final String KEY_DIN_NO = "din_no_key";
+    private static final String KEY_DOSAGE_NO = "dosage_no_key";
+    private static final String KEY_DOSAGE_TYPE = "dosage_type_key";
+
+
     private static final String KEY_REPEAT_TYPE = "repeat_type_key";
     private static final String KEY_ACTIVE = "active_key";
 
@@ -125,7 +132,9 @@ public class AddReminderActivity extends AppCompatActivity implements
         mRepeatText = (TextView) findViewById(R.id.set_repeat);
         mRepeatNoText = (TextView) findViewById(R.id.set_repeat_no);
         mDINnoText = (TextView) findViewById(R.id.set_DIN_no);
+        mDosageNoText = (TextView) findViewById(R.id.set_dosage_no);
         mRepeatTypeText = (TextView) findViewById(R.id.set_repeat_type);
+        mDosageTypeText = (TextView) findViewById(R.id.set_dosage_type);
         mRepeatSwitch = (Switch) findViewById(R.id.repeat_switch);
         mFAB1 = (FloatingActionButton) findViewById(R.id.starred1);
         mFAB2 = (FloatingActionButton) findViewById(R.id.starred2);
@@ -135,7 +144,9 @@ public class AddReminderActivity extends AppCompatActivity implements
         mRepeat = "true";
         mRepeatNo = Integer.toString(1);
         mDINno = Integer.toString(1);
+        mDosageNo = Integer.toString(1);
         mRepeatType = "Hour";
+        mDosageType = "pill";
 
         mCalendar = Calendar.getInstance();
         mHour = mCalendar.get(Calendar.HOUR_OF_DAY);
@@ -170,8 +181,11 @@ public class AddReminderActivity extends AppCompatActivity implements
         mTimeText.setText(mTime);
         mRepeatNoText.setText(mRepeatNo);
         mDINnoText.setText(mDINno);
+
         mRepeatTypeText.setText(mRepeatType);
+        mDosageTypeText.setText(mDosageType);
         mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
+        mDosageNoText.setText(mDosageNo + " " + mDosageType + "(s)");
 
         // To save state on device rotation
         if (savedInstanceState != null) {
@@ -199,9 +213,17 @@ public class AddReminderActivity extends AppCompatActivity implements
             mDINnoText.setText(savedDINno);
             mDINno = savedDINno;
 
+            String savedDosageNo = savedInstanceState.getString(KEY_DOSAGE_NO);
+            mDosageNoText.setText(savedDosageNo);
+            mDosageNo = savedDosageNo;
+
             String savedRepeatType = savedInstanceState.getString(KEY_REPEAT_TYPE);
             mRepeatTypeText.setText(savedRepeatType);
             mRepeatType = savedRepeatType;
+
+            String savedDosageType = savedInstanceState.getString(KEY_DOSAGE_TYPE);
+            mDosageTypeText.setText(savedDosageType);
+            mDosageType = savedDosageType;
 
             mActive = savedInstanceState.getString(KEY_ACTIVE);
         }
@@ -234,6 +256,8 @@ public class AddReminderActivity extends AppCompatActivity implements
         outState.putCharSequence(KEY_REPEAT, mRepeatText.getText());
         outState.putCharSequence(KEY_REPEAT_NO, mRepeatNoText.getText());
         outState.putCharSequence(KEY_DIN_NO, mDINnoText.getText());
+        outState.putCharSequence(KEY_DOSAGE_NO, mDosageNoText.getText());
+        outState.putCharSequence(KEY_DOSAGE_TYPE, mDosageTypeText.getText());
         outState.putCharSequence(KEY_REPEAT_TYPE, mRepeatTypeText.getText());
         outState.putCharSequence(KEY_ACTIVE, mActive);
     }
@@ -325,6 +349,45 @@ public class AddReminderActivity extends AppCompatActivity implements
         }
     }
 
+
+    public void selectDosageType(View v) {
+        final String[] items = new String[17];
+
+        items[0] = "Pills";
+        items[1] = "cc";
+        items[2] = "ml";
+        items[3] = "gr";
+        items[4] = "mg";
+        items[5] = "Drops";
+        items[6] = "Pieces";
+        items[7] = "Puffs";
+        items[8] = "Units";
+        items[9] = "teaspoon";
+        items[10] = "tablespoon";
+        items[11] = "patch";
+        items[12] = "mcg";
+        items[13] = "iu";
+        items[14] = "meq";
+        items[15] = "Carton";
+        items[16] = "Spray";
+
+        //List Dialog
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Units");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mDosageType = items[which];
+                mDosageTypeText.setText(mDosageType);
+                mDosageNoText.setText(mDosageNo + " " + mDosageType);
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
     // On clicking repeat type button
     public void selectRepeatType(View v) {
         final String[] items = new String[5];
@@ -350,6 +413,40 @@ public class AddReminderActivity extends AppCompatActivity implements
         AlertDialog alert = builder.create();
         alert.show();
     }
+
+
+    // On clicking repeat interval button
+    public void setDosageNo(View v) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Enter Number");
+
+        // Create EditText box to input repeat number
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        alert.setView(input);
+        alert.setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        if (input.getText().toString().length() == 0) {
+                            mDosageNo = Integer.toString(1);
+                            // mDosageNoText.setText(mDosageNo);
+                            mDosageNoText.setText(mDosageNo + " " + mDosageType);
+                        } else {
+                            mDosageNo = input.getText().toString();
+                            // mDosageNoText.setText(mDosageNo);
+                            mDosageNoText.setText(mDosageNo + " " + mDosageType);
+                        }
+                    }
+                });
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                // do nothing
+            }
+        });
+        alert.show();
+    }
+
 
     // On clicking repeat interval button
     public void setRepeatNo(View v) {
@@ -582,12 +679,17 @@ public class AddReminderActivity extends AppCompatActivity implements
 
         ContentValues values = new ContentValues();
 
+        Log.i("Testing", "" + mDosageNo);
+
+
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_TITLE, mTitle);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DATE, mDate);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_TIME, mTime);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT, mRepeat);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO, mRepeatNo);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO, mDINno);
+        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO, mDosageNo);
+        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE, mDosageType);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE, mRepeatType);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE, mActive);
 
@@ -683,6 +785,8 @@ public class AddReminderActivity extends AppCompatActivity implements
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO,
                 AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO,
+                AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO,
+                AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE,
         };
@@ -711,6 +815,8 @@ public class AddReminderActivity extends AppCompatActivity implements
             int repeatColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT);
             int repeatNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO);
             int dinNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO);
+            int dosageNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO);
+            int dosageTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE);
             int repeatTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE);
             int activeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE);
 
@@ -721,6 +827,8 @@ public class AddReminderActivity extends AppCompatActivity implements
             String repeat = cursor.getString(repeatColumnIndex);
             String repeatNo = cursor.getString(repeatNoColumnIndex);
             String dinNo = cursor.getString(dinNoColumnIndex);
+            String dosageNo = cursor.getString(dosageNoColumnIndex);
+            String dosageType = cursor.getString(dosageTypeColumnIndex);
             String repeatType = cursor.getString(repeatTypeColumnIndex);
             String active = cursor.getString(activeColumnIndex);
 
@@ -731,6 +839,8 @@ public class AddReminderActivity extends AppCompatActivity implements
             mTimeText.setText(time);
             mRepeatNoText.setText(repeatNo);
             mDINnoText.setText(dinNo);
+            mDosageNoText.setText(dosageNo + " " + dosageType + "(s)");
+            mDosageTypeText.setText(dosageType);
             mRepeatTypeText.setText(repeatType);
             mRepeatText.setText("Every " + repeatNo + " " + repeatType + "(s)");
             // Setup up active buttons

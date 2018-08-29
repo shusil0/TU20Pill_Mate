@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class AlarmReminderDbHelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "medReminder.db";
+    private static final String DATABASE_NAME = "medicineReminder.db";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -28,6 +28,8 @@ public class AlarmReminderDbHelper extends SQLiteOpenHelper {
                 + AlarmReminderContract.AlarmReminderEntry.KEY_TIME + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO + " TEXT, "
+                + AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO + " TEXT, "
+                + AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE + " TEXT " + " );";

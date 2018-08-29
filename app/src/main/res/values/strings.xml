@@ -17,7 +17,9 @@
     <string name="repeat">Repeat</string>
     <string name="repeat_off">Off</string>
     <string name="repeat_no">Repetition Interval </string>
+    <string name="dosage_no">Dosage </string>
     <string name="repeat_type">Type of Repetitions</string>
+    <string name="dosage_type">Units </string>
 
     <string name="action_discard_reminder">Discard Reminder</string>
     <string name="action_save_reminder">Save Reminder</string>
