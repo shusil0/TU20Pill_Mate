@@ -26,6 +26,25 @@ public class get_started extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void switchToUserProfile() {
+        Intent intent = new Intent(getApplicationContext(), userProfile.class);
+        startActivity(intent);
+    }
+
+
+    public void switchToRemindersList() {
+        Intent intent = new Intent(getApplicationContext(), remindersList.class);
+        startActivity(intent);
+    }
+
+    public void myProfile(View v) {
+        switchToUserProfile();
+    }
+
+    public void remindersList(View v) {
+        switchToRemindersList();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

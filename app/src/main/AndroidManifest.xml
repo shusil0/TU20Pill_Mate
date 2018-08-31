@@ -82,6 +82,8 @@
         <activity android:name=".webmd" />
         <activity android:name=".dailymed" />
         <activity android:name=".rxlist" />
+        <activity android:name=".userProfile" />
+        <activity android:name=".remindersList"></activity>
     </application>
 
 </manifest>

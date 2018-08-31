@@ -1,13 +1,10 @@
 package com.example.user.tu20pill_mate;
 
-
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
-
 import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
@@ -29,12 +26,11 @@ import android.widget.Toast;
 import com.example.user.tu20pill_mate.data.AlarmReminderContract;
 import com.example.user.tu20pill_mate.data.AlarmReminderDbHelper;
 
-
 /**
  * Created by Shusil
  */
 
-public class alarm_main extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class remindersList extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private FloatingActionButton mAddReminderButton;
     private Toolbar mToolbar;
@@ -67,8 +63,6 @@ public class alarm_main extends AppCompatActivity implements LoaderManager.Loade
 
         mCursorAdapter = new AlarmCursorAdapter(this, null);
         reminderListView.setAdapter(mCursorAdapter);
-
-        addReminderTitle();
 
         reminderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
