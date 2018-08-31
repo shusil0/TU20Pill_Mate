@@ -202,6 +202,26 @@ public class AddReminderActivity extends AppCompatActivity implements
         });
 
 
+        // Setup Instructions EditText
+        mIntructionsText.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mInstructions = s.toString().trim();
+                mIntructionsText.setError(null);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+
+
+
         // Setup TextViews using reminder values
         mDateText.setText(mDate);
         // mExpiryDateText.setText(mExpiryDate);
