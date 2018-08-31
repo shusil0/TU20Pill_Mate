@@ -4,12 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MedInfo">
+    android:background="@android:color/holo_blue_bright"
+    tools:context=".drugInfo">
 
-    <WebView
-        android:id="@+id/webMed"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:background="@drawable/buttonstyle2"
+        android:text="Drugs"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="168dp"
+        android:background="@drawable/buttonstyle2"
+        android:text="MedBroadcast"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/buttonstyle2"
+        android:text="webmd"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="152dp"
+        android:background="@drawable/buttonstyle2"
+        android:text="dailymed"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="236dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="53dp"
+        android:background="@drawable/buttonstyle2"
+        android:text="rxlist"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="24sp" />
 </RelativeLayout>

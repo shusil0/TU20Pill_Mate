@@ -22,7 +22,7 @@ public class get_started extends AppCompatActivity {
     }
 
     public void switchToMedInfo() {
-        Intent intent = new Intent(this, MedInfo.class);
+        Intent intent = new Intent(this, drugInfo.class);
         startActivity(intent);
     }
 

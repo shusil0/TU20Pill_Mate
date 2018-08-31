@@ -11,6 +11,7 @@
     <string name="title_activity_licenses">Licenses</string>
 
     <string name="add_reminder">Medicine</string>
+
     <string name="details">Details</string>
     <string name="date">Date</string>
     <string name="time">Time</string>
@@ -20,6 +21,9 @@
     <string name="dosage_no">Dosage </string>
     <string name="repeat_type">Type of Repetitions</string>
     <string name="dosage_type">Units </string>
+    <string name="quantity_no">Quantity </string>
+    <string name="expiry_date">Expiry Date </string>
+    <string name="instructions">Instructions/Notes </string>
 
     <string name="action_discard_reminder">Discard Reminder</string>
     <string name="action_save_reminder">Save Reminder</string>

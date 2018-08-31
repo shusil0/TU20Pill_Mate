@@ -17,14 +17,14 @@
         app:contentInsetLeft="0dp"
         app:contentInsetStart="16dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        android:background="?attr/colorPrimary" />
+        android:background="@drawable/gradient" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_below="@+id/toolbar"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:id="@+id/add_reminder_layout_top"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/gradient"
         android:orientation="vertical"
         android:layout_height="148dp">
 
@@ -112,6 +112,7 @@
                 </LinearLayout>
 
             </RelativeLayout>
+
 
             <RelativeLayout
                 android:id="@+id/time"
@@ -247,6 +248,51 @@
 
                     <TextView
                         android:id="@+id/set_repeat_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/abc_secondary_text_material_dark"
+                        android:textSize="15dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/QuantityNo"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="setQuantityNo">
+
+                <ImageView
+                    android:id="@+id/quantity_no_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="32dp"
+                    android:src="@drawable/ic_unfold_more_grey600_24dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/quantity_no_icon"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/quantity_no_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quantity_no"
+                        android:textColor="@color/abc_primary_text_material_dark"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/set_quantity_no"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textColor="@color/abc_secondary_text_material_dark"
@@ -435,6 +481,34 @@
                 </LinearLayout>
 
             </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/toolbar"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:id="@+id/add_instructions_layout_top"
+                android:background="@drawable/gradient"
+                android:orientation="vertical"
+                android:layout_height="100dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/reminder_instructions"
+                    android:layout_marginLeft="3dp"
+                    android:hint="@string/instructions"
+                    android:textSize="15dp"
+                    android:lines="4"
+                    android:minLines="4"
+                    android:gravity="top|left"
+                    android:textColor="@color/abc_secondary_text_material_dark"
+                    android:scrollHorizontally="false"
+                    android:textColorHint="@color/abc_primary_text_material_dark"
+                    android:inputType="textCapWords|textMultiLine"
+                    android:layout_marginRight="16dp"
+                    android:layout_height="140dp" />
+
+            </LinearLayout>
 
 
         </LinearLayout>

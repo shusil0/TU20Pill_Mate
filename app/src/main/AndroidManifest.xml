@@ -74,9 +74,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MedInfo" />
+        <activity android:name=".medbroadcast" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".notificationIntent"></activity>
+        <activity android:name=".notificationIntent" />
+        <activity android:name=".drugInfo" />
+        <activity android:name=".drugs" />
+        <activity android:name=".webmd" />
+        <activity android:name=".dailymed" />
+        <activity android:name=".rxlist" />
     </application>
 
 </manifest>
