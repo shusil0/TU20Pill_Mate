@@ -83,7 +83,10 @@
         <activity android:name=".dailymed" />
         <activity android:name=".rxlist" />
         <activity android:name=".userProfile" />
-        <activity android:name=".remindersList"></activity>
+        <activity android:name=".remindersList" />
+        <activity android:name=".appointmentReminders" />
+        <activity android:name=".remindersPlus" />
+        <activity android:name=".appointmentRemindersMain"></activity>
     </application>
 
 </manifest>

@@ -37,6 +37,17 @@ public class get_started extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void switchToOtherReminders() {
+        Intent intent = new Intent(getApplicationContext(), remindersPlus.class);
+        startActivity(intent);
+    }
+
+    public void otherReminders(View v) {
+        switchToOtherReminders();
+    }
+
+
     public void myProfile(View v) {
         switchToUserProfile();
     }

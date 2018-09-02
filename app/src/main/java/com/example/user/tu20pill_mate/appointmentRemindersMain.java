@@ -1,10 +1,13 @@
 package com.example.user.tu20pill_mate;
 
+
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
+
 import android.content.DialogInterface;
 import android.content.Intent;
+
 import android.database.Cursor;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
@@ -24,18 +27,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.tu20pill_mate.data.AlarmReminderContract;
-import com.example.user.tu20pill_mate.data.AlarmReminderDbHelper;
+import com.example.user.tu20pill_mate.data.NotificationReminderDbHelper;
+
 
 /**
  * Created by Shusil
  */
 
-public class remindersList extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class appointmentRemindersMain extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private FloatingActionButton mAddReminderButton;
     private Toolbar mToolbar;
-    AlarmCursorAdapter mCursorAdapter;
-    AlarmReminderDbHelper alarmReminderDbHelper = new AlarmReminderDbHelper(this);
+    appointmentReminderAdapter mCursorAdapter;
+    NotificationReminderDbHelper alarmReminderDbHelper = new NotificationReminderDbHelper(this);
     ListView reminderListView;
     ProgressDialog prgDialog;
     TextView reminderText;
@@ -47,7 +51,7 @@ public class remindersList extends AppCompatActivity implements LoaderManager.Lo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alarm_main);
+        setContentView(R.layout.activity_appointment_reminders_main);
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -61,14 +65,16 @@ public class remindersList extends AppCompatActivity implements LoaderManager.Lo
         View emptyView = findViewById(R.id.empty_view);
         reminderListView.setEmptyView(emptyView);
 
-        mCursorAdapter = new AlarmCursorAdapter(this, null);
+        mCursorAdapter = new appointmentReminderAdapter(this, null);
         reminderListView.setAdapter(mCursorAdapter);
+
+        //addReminderTitle();
 
         reminderListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                Intent intent = new Intent(getApplicationContext(), AddReminderActivity.class);
+                Intent intent = new Intent(getApplicationContext(), appointmentReminders.class);
 
                 Uri currentVehicleUri = ContentUris.withAppendedId(AlarmReminderContract.AlarmReminderEntry.CONTENT_URI, id);
 
@@ -105,12 +111,9 @@ public class remindersList extends AppCompatActivity implements LoaderManager.Lo
                 AlarmReminderContract.AlarmReminderEntry.KEY_DATE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_TIME,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT,
-                AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO,
-                AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO,
-                AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE,
+
                 AlarmReminderContract.AlarmReminderEntry.KEY_INSTRUCTIONS,
-                AlarmReminderContract.AlarmReminderEntry.KEY_EXPIRY_DATE,
-                AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO,
+
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE
@@ -151,6 +154,7 @@ public class remindersList extends AppCompatActivity implements LoaderManager.Lo
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
+
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

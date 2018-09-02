@@ -169,7 +169,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/gradient"
                 android:gravity="center"
-                android:onClick="physician"
+                android:onClick="otherReminders"
                 android:orientation="vertical">
 
                 <ImageView
@@ -177,13 +177,13 @@
                     android:layout_height="64dp"
                     android:background="@drawable/cerclebackgroundpurple"
                     android:padding="10dp"
-                    android:src="@drawable/ic_lightbulb_outline_black_24dp" />
+                    android:src="@drawable/ic_add_alert_black_24dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="Physician"
+                    android:text="Other Reminders"
                     android:textStyle="bold" />
 
                 <View

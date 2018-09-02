@@ -11,6 +11,7 @@
     <string name="title_activity_licenses">Licenses</string>
 
     <string name="add_reminder">Medicine</string>
+    <string name="appointment">Appointment</string>
 
     <string name="details">Details</string>
     <string name="date">Date</string>

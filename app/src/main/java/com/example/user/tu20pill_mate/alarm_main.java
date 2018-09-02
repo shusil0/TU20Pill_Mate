@@ -151,12 +151,13 @@ public class alarm_main extends AppCompatActivity implements LoaderManager.Loade
 
     public void addReminderTitle() {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.GreenTheme);
         builder.setTitle("Set Reminder Title");
 
         final EditText input = new EditText(this);
         input.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(input);
+
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

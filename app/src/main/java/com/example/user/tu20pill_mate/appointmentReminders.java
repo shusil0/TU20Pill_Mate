@@ -15,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
@@ -40,7 +39,7 @@ import java.util.Calendar;
  * Created by Shusil
  */
 
-public class AddReminderActivity extends AppCompatActivity implements
+public class appointmentReminders extends AppCompatActivity implements
         TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener, LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -108,7 +107,7 @@ public class AddReminderActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_reminder);
+        setContentView(R.layout.activity_appointment_reminders);
 
         Intent intent = getIntent();
         mCurrentReminderUri = intent.getData();
@@ -136,13 +135,13 @@ public class AddReminderActivity extends AppCompatActivity implements
         mTimeText = (TextView) findViewById(R.id.set_time);
         mRepeatText = (TextView) findViewById(R.id.set_repeat);
         mRepeatNoText = (TextView) findViewById(R.id.set_repeat_no);
-        mDINnoText = (TextView) findViewById(R.id.set_DIN_no);
+
         mQuantityNoText = (TextView) findViewById(R.id.set_quantity_no);
         // mExpiryDateText = (TextView) findViewById(R.id.set_expiry_date);
         mIntructionsText = (EditText) findViewById(R.id.reminder_instructions);
-        mDosageNoText = (TextView) findViewById(R.id.set_dosage_no);
+
         mRepeatTypeText = (TextView) findViewById(R.id.set_repeat_type);
-        mDosageTypeText = (TextView) findViewById(R.id.set_dosage_type);
+        // mDosageTypeText = (TextView) findViewById(R.id.set_dosage_type);
         mRepeatSwitch = (Switch) findViewById(R.id.repeat_switch);
         mFAB1 = (FloatingActionButton) findViewById(R.id.starred1);
         mFAB2 = (FloatingActionButton) findViewById(R.id.starred2);
@@ -151,13 +150,13 @@ public class AddReminderActivity extends AppCompatActivity implements
         mActive = "true";
         mRepeat = "true";
         mRepeatNo = Integer.toString(1);
-        mDINno = Integer.toString(1);
-        mDosageNo = Integer.toString(1);
+       /* mDINno = Integer.toString(1);
+        mDosageNo = Integer.t*/
         mRepeatType = "Hour";
-        mDosageType = "pill";
+       /* mDosageType = "pill";
         mQuantityNo = Integer.toString(1);
+       */
         mInstructions = "Get well soon";
-
 
 
         mCalendar = Calendar.getInstance();
@@ -179,8 +178,6 @@ public class AddReminderActivity extends AppCompatActivity implements
 
 
         //   mExpiryDate = mmDay + "/" + mmMonth + "/" + mmYear;
-
-
 
 
         // Setup Reminder Title EditText
@@ -221,18 +218,17 @@ public class AddReminderActivity extends AppCompatActivity implements
         });
 
 
-
         // Setup TextViews using reminder values
         mDateText.setText(mDate);
         // mExpiryDateText.setText(mExpiryDate);
         mTimeText.setText(mTime);
         mRepeatNoText.setText(mRepeatNo);
-        mDINnoText.setText(mDINno);
-        mQuantityNoText.setText(mQuantityNo);
+        //mDINnoText.setText(mDINno);
+        //  mQuantityNoText.setText(mQuantityNo);
         mRepeatTypeText.setText(mRepeatType);
-        mDosageTypeText.setText(mDosageType);
+        // mDosageTypeText.setText(mDosageType);
         mRepeatText.setText("Every " + mRepeatNo + " " + mRepeatType + "(s)");
-        mDosageNoText.setText(mDosageNo + " " + mDosageType + "(s)");
+        //mDosageNoText.setText(mDosageNo + " " + mDosageType + "(s)");
         mIntructionsText.setText(mInstructions);
 
 
@@ -266,25 +262,11 @@ public class AddReminderActivity extends AppCompatActivity implements
             mRepeatNoText.setText(savedRepeatNo);
             mRepeatNo = savedRepeatNo;
 
-            String savedDINno = savedInstanceState.getString(KEY_DIN_NO);
-            mDINnoText.setText(savedDINno);
-            mDINno = savedDINno;
-
-            String savedDosageNo = savedInstanceState.getString(KEY_DOSAGE_NO);
-            mDosageNoText.setText(savedDosageNo);
-            mDosageNo = savedDosageNo;
-
-            String savedQuantityNo = savedInstanceState.getString(KEY_QUANTITY_NO);
-            mQuantityNoText.setText(savedQuantityNo);
-            mQuantityNo = savedQuantityNo;
 
             String savedRepeatType = savedInstanceState.getString(KEY_REPEAT_TYPE);
             mRepeatTypeText.setText(savedRepeatType);
             mRepeatType = savedRepeatType;
 
-            String savedDosageType = savedInstanceState.getString(KEY_DOSAGE_TYPE);
-            mDosageTypeText.setText(savedDosageType);
-            mDosageType = savedDosageType;
 
             mActive = savedInstanceState.getString(KEY_ACTIVE);
         }
@@ -318,10 +300,10 @@ public class AddReminderActivity extends AppCompatActivity implements
         // outState.putCharSequence(KEY_EXPIRY_DATE, mExpiryDateText.getText());
         outState.putCharSequence(KEY_REPEAT, mRepeatText.getText());
         outState.putCharSequence(KEY_REPEAT_NO, mRepeatNoText.getText());
-        outState.putCharSequence(KEY_DIN_NO, mDINnoText.getText());
-        outState.putCharSequence(KEY_QUANTITY_NO, mQuantityNoText.getText());
-        outState.putCharSequence(KEY_DOSAGE_NO, mDosageNoText.getText());
-        outState.putCharSequence(KEY_DOSAGE_TYPE, mDosageTypeText.getText());
+        // outState.putCharSequence(KEY_DIN_NO, mDINnoText.getText());
+        // outState.putCharSequence(KEY_QUANTITY_NO, mQuantityNoText.getText());
+        //outState.putCharSequence(KEY_DOSAGE_NO, mDosageNoText.getText());
+        //outState.putCharSequence(KEY_DOSAGE_TYPE, mDosageTypeText.getText());
         outState.putCharSequence(KEY_REPEAT_TYPE, mRepeatTypeText.getText());
         outState.putCharSequence(KEY_ACTIVE, mActive);
     }
@@ -415,7 +397,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         }
     }
 
-
+/*
     public void selectDosageType(View v) {
         final String[] items = new String[17];
 
@@ -452,7 +434,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         AlertDialog alert = builder.create();
         alert.show();
 
-    }
+    }*/
 
     // On clicking repeat type button
     public void selectRepeatType(View v) {
@@ -480,6 +462,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         alert.show();
     }
 
+/*
 
     // On clicking repeat interval button
     public void setDosageNo(View v) {
@@ -512,7 +495,9 @@ public class AddReminderActivity extends AppCompatActivity implements
         });
         alert.show();
     }
+*/
 
+/*
 
     // On clicking repeat interval button
     public void setQuantityNo(View v) {
@@ -545,6 +530,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         });
         alert.show();
     }
+*/
 
 
     // On clicking repeat interval button
@@ -579,7 +565,7 @@ public class AddReminderActivity extends AppCompatActivity implements
         alert.show();
     }
 
-
+/*
     // On clicking repeat interval button
     public void setDINno(View v) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this, R.style.GreenTheme);
@@ -610,9 +596,7 @@ public class AddReminderActivity extends AppCompatActivity implements
             }
         });
         alert.show();
-    }
-
-
+    }*/
 
 
     @Override
@@ -664,7 +648,7 @@ public class AddReminderActivity extends AppCompatActivity implements
                 // If the reminder hasn't changed, continue with navigating up to parent activity
                 // which is the {@link MainActivity}.
                 if (!mVehicleHasChanged) {
-                    NavUtils.navigateUpFromSameTask(AddReminderActivity.this);
+                    NavUtils.navigateUpFromSameTask(appointmentReminders.this);
                     return true;
                 }
 
@@ -676,7 +660,7 @@ public class AddReminderActivity extends AppCompatActivity implements
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 // User clicked "Discard" button, navigate to parent activity.
-                                NavUtils.navigateUpFromSameTask(AddReminderActivity.this);
+                                NavUtils.navigateUpFromSameTask(appointmentReminders.this);
                             }
                         };
 
@@ -786,12 +770,12 @@ public class AddReminderActivity extends AppCompatActivity implements
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_TIME, mTime);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT, mRepeat);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO, mRepeatNo);
-        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO, mDINno);
-        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO, mQuantityNo);
+        // values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO, mDINno);
+        //values.put(AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO, mQuantityNo);
         //  values.put(AlarmReminderContract.AlarmReminderEntry.KEY_EXPIRY_DATE, mExpiryDate);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_INSTRUCTIONS, mInstructions);
-        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO, mDosageNo);
-        values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE, mDosageType);
+        //values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO, mDosageNo);
+        //values.put(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE, mDosageType);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE, mRepeatType);
         values.put(AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE, mActive);
 
@@ -886,12 +870,10 @@ public class AddReminderActivity extends AppCompatActivity implements
                 AlarmReminderContract.AlarmReminderEntry.KEY_TIME,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT,
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO,
-                AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO,
+
                 AlarmReminderContract.AlarmReminderEntry.KEY_INSTRUCTIONS,
 
-                AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO,
-                AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO,
-                AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE,
+
                 AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE,
                 AlarmReminderContract.AlarmReminderEntry.KEY_ACTIVE,
         };
@@ -919,10 +901,10 @@ public class AddReminderActivity extends AppCompatActivity implements
             int timeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_TIME);
             int repeatColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT);
             int repeatNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_NO);
-            int dinNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO);
-            int dosageNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO);
-            int dosageTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE);
-            int quantityNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO);
+            //int dinNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DIN_NO);
+            //int dosageNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO);
+            //  int dosageTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE);
+            //  int quantityNoColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO);
             // int expiryDateColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_EXPIRY_DATE);
             int instructionColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_INSTRUCTIONS);
             int repeatTypeColumnIndex = cursor.getColumnIndex(AlarmReminderContract.AlarmReminderEntry.KEY_REPEAT_TYPE);
@@ -934,12 +916,12 @@ public class AddReminderActivity extends AppCompatActivity implements
             String time = cursor.getString(timeColumnIndex);
             String repeat = cursor.getString(repeatColumnIndex);
             String repeatNo = cursor.getString(repeatNoColumnIndex);
-            String dinNo = cursor.getString(dinNoColumnIndex);
+            // String dinNo = cursor.getString(dinNoColumnIndex);
             String instructions = cursor.getString(instructionColumnIndex);
             //String expiryDate = cursor.getString(expiryDateColumnIndex);
-            String quantityNo = cursor.getString(quantityNoColumnIndex);
-            String dosageNo = cursor.getString(dosageNoColumnIndex);
-            String dosageType = cursor.getString(dosageTypeColumnIndex);
+            //  String quantityNo = cursor.getString(quantityNoColumnIndex);
+            //String dosageNo = cursor.getString(dosageNoColumnIndex);
+            // String dosageType = cursor.getString(dosageTypeColumnIndex);
             String repeatType = cursor.getString(repeatTypeColumnIndex);
             String active = cursor.getString(activeColumnIndex);
 
@@ -949,12 +931,12 @@ public class AddReminderActivity extends AppCompatActivity implements
             mDateText.setText(date);
             mTimeText.setText(time);
             mRepeatNoText.setText(repeatNo);
-            mDINnoText.setText(dinNo);
+            //mDINnoText.setText(dinNo);
             // mExpiryDateText.setText(expiryDate);
             mIntructionsText.setText(instructions);
-            mQuantityNoText.setText(quantityNo + " " + dosageType + "(s)");
-            mDosageNoText.setText(dosageNo + " " + dosageType + "(s)");
-            mDosageTypeText.setText(dosageType);
+            // mQuantityNoText.setText(quantityNo + " " + dosageType + "(s)");
+            // mDosageNoText.setText(dosageNo + " " + dosageType + "(s)");
+            // mDosageTypeText.setText(dosageType);
             mRepeatTypeText.setText(repeatType);
             mRepeatText.setText("Every " + repeatNo + " " + repeatType + "(s)");
             // Setup up active buttons
@@ -984,4 +966,4 @@ public class AddReminderActivity extends AppCompatActivity implements
 
 
 // DIN Number
-// 
+//
