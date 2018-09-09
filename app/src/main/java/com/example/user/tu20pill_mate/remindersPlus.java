@@ -35,7 +35,7 @@ public class remindersPlus extends AppCompatActivity {
         btnRefill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent k = new Intent(getApplicationContext(), Slide_activity.class);
+                Intent k = new Intent(getApplicationContext(), appointmentRemindersMain.class);
                 startActivity(k); // runs
             }
         });

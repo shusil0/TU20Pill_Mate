@@ -31,6 +31,13 @@ public class AlarmReminderDbHelper extends SQLiteOpenHelper {
                 + AlarmReminderContract.AlarmReminderEntry.KEY_QUANTITY_NO + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_EXPIRY_DATE + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_INSTRUCTIONS + " TEXT, "
+                + AlarmReminderContract.AlarmReminderEntry.FIRST_NAME + " TEXT, "
+                + AlarmReminderContract.AlarmReminderEntry.SECOND_NAME + " TEXT, "
+                + AlarmReminderContract.AlarmReminderEntry.AGE + "TEXT,"
+                + AlarmReminderContract.AlarmReminderEntry.BLOOD_TYPE + "TEXT,"
+                + AlarmReminderContract.AlarmReminderEntry.HEIGHT + "TEXT,"
+                + AlarmReminderContract.AlarmReminderEntry.WEIGHT + "TEXT,"
+                + AlarmReminderContract.AlarmReminderEntry.ALLERGIES + "TEXT,"
 
                 + AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_NO + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_DOSAGE_TYPE + " TEXT, "

@@ -31,6 +31,8 @@ public class AlarmReminderContract {
 
         public final static String TABLE_NAME = "vehicles";
 
+        public final static String TABLE_NAME1 = "reminders";
+
         public final static String _ID = BaseColumns._ID;
 
         public static final String KEY_TITLE = "title";
@@ -42,6 +44,13 @@ public class AlarmReminderContract {
         public static final String KEY_QUANTITY_NO = "quantity_no";
         public static final String KEY_EXPIRY_DATE = "expiry_date";
         public static final String KEY_INSTRUCTIONS = "instructions";
+        public static final String FIRST_NAME = "first_name";
+        public static final String SECOND_NAME = "second_name";
+        public static final String AGE = "age";
+        public static final String ALLERGIES = "allergies";
+        public static final String BLOOD_TYPE = "blood_type";
+        public static final String WEIGHT = "weight";
+        public static final String HEIGHT = "height";
 
 
         public static final String KEY_DOSAGE_NO = "dosage_no";

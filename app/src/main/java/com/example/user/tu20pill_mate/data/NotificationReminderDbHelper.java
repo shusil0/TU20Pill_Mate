@@ -21,7 +21,7 @@ public class NotificationReminderDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Create a String that contains the SQL statement to create the reminder table
-        String SQL_CREATE_ALARM_TABLE = "CREATE TABLE " + AlarmReminderContract.AlarmReminderEntry.TABLE_NAME + " ("
+        String SQL_CREATE_ALARM_TABLE = "CREATE TABLE " + AlarmReminderContract.AlarmReminderEntry.TABLE_NAME1 + " ("
                 + AlarmReminderContract.AlarmReminderEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_TITLE + " TEXT, "
                 + AlarmReminderContract.AlarmReminderEntry.KEY_DATE + " TEXT, "

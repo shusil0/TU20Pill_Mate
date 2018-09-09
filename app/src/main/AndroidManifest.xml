@@ -86,7 +86,8 @@
         <activity android:name=".remindersList" />
         <activity android:name=".appointmentReminders" />
         <activity android:name=".remindersPlus" />
-        <activity android:name=".appointmentRemindersMain"></activity>
+        <activity android:name=".appointmentRemindersMain" />
+        <activity android:name=".comingsoon"></activity>
     </application>
 
 </manifest>

@@ -30,6 +30,7 @@
     <string name="action_save_reminder">Save Reminder</string>
 
     <string name="editor_activity_title_new_reminder">Add Medicine Details</string>
+    <string name="prof">Add your profile</string>
     <string name="editor_activity_title_edit_reminder">Edit Reminder</string>
     <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
     <string name="discard">Discard</string>

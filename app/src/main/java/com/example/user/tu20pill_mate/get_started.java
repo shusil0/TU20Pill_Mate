@@ -38,8 +38,17 @@ public class get_started extends AppCompatActivity {
     }
 
 
+    public void physician(View v) {
+        switchToPhysician();
+    }
+
     public void switchToOtherReminders() {
         Intent intent = new Intent(getApplicationContext(), remindersPlus.class);
+        startActivity(intent);
+    }
+
+    public void switchToPhysician() {
+        Intent intent = new Intent(getApplicationContext(), comingsoon.class);
         startActivity(intent);
     }
 
